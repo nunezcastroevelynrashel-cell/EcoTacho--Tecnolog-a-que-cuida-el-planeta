@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Viaje a Trujillo 2 - EcoTacho</title>
+
+<link rel="icon" type="image/png" href="Imagenes/Logo-de-EcoTacho.png">
+
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#064e3b,#16a34a,#84cc16);
+min-height:100vh;
+}
+header{
+position:sticky;top:0;z-index:1000;
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 40px;background:#064e3b;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+.marca{display:flex;align-items:center;gap:15px;}
+.logo{width:85px;}
+.titulo h1{color:white;font-family:Georgia,serif;font-size:26px;}
+.titulo p{color:#d1fae5;font-size:13px;}
+.nav-menu{display:flex;align-items:center;gap:22px;}
+.nav-menu a{color:white;text-decoration:none;font-family:Georgia,serif;font-weight:bold;}
+.nav-menu a:hover{color:#bef264;}
+.carrito{background:#84cc16;color:#173b1c !important;padding:10px 15px;border-radius:8px;}
+.menu-toggle{display:none;background:none;border:none;color:white;font-size:32px;cursor:pointer;}
+main{
+max-width:1050px;margin:55px auto;padding:45px 45px 55px;
+background:white;border-radius:25px;box-shadow:0 12px 30px rgba(0,0,0,.25);
+}
+main h1{
+font-family:Georgia,serif;font-size:42px;color:#064e3b;margin-bottom:10px;
+text-align:center;position:relative;padding-bottom:16px;
+}
+main h1:after{content:"";display:block;width:90px;height:5px;background:#84cc16;border-radius:10px;margin:12px auto 0;}
+.descripcion{
+font-size:18px;line-height:1.8;color:#365c4a;margin:0 auto 50px;text-align:center;max-width:820px;
+}
+.ruta{display:flex;flex-direction:column;gap:28px;position:relative;}
+.ruta:before{
+content:"";position:absolute;left:27px;top:20px;bottom:20px;width:4px;background:#84cc16;border-radius:10px;
+}
+.parada{
+background:#d1fae5;padding:24px 24px 24px 65px;border-radius:18px;
+box-shadow:0 7px 18px rgba(0,0,0,.14);position:relative;
+border-left:7px solid #16a34a;
+}
+.parada:before{
+content:counter(paradas);counter-increment:paradas;position:absolute;left:8px;top:25px;
+width:39px;height:39px;border-radius:50%;background:#064e3b;color:white;
+display:flex;align-items:center;justify-content:center;font-weight:bold;font-family:Georgia,serif;font-size:17px;
+box-shadow:0 0 0 5px white;
+}
+.ruta{counter-reset:paradas;}
+.parada h2{font-family:Georgia,serif;color:#064e3b;font-size:22px;margin-bottom:18px;text-align:left;}
+.fotos{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.foto-item{background:white;padding:10px;border-radius:14px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:0 3px 10px rgba(0,0,0,.09);}
+.fotos img,.foto-item img{width:100%;height:170px;object-fit:cover;border-radius:10px;border:4px solid #84cc16;}
+.foto-descripcion{font-size:13px;line-height:1.5;color:#365c4a;text-align:left;padding:2px 4px 5px;}
+.volver{display:block;width:max-content;margin:42px auto 0;padding:14px 28px;background:#064e3b;color:white;text-decoration:none;font-weight:bold;border-radius:8px;}
+.volver:hover{background:#15803d;}
+footer{background:#011c16;color:white;padding:40px;text-align:center;}
+footer h3{color:#bef264;font-family:Georgia,serif;font-size:26px;}
+.copyright{margin-top:20px;color:#94a3b8;}
+@media(max-width:850px){
+.menu-toggle{display:block;}
+.nav-menu{display:none;position:absolute;top:100%;right:0;width:260px;background:#064e3b;flex-direction:column;padding:20px;}
+.nav-menu.active{display:flex;}
+main{margin:35px 15px;padding:35px 20px 45px;}
+main h1{font-size:34px;}
+.fotos{grid-template-columns:1fr;}
+.ruta:before{left:20px;}
+.parada{padding-left:52px;}
+.parada:before{left:1px;}
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="marca">
+
+<img src="Imagenes/Logo-de-EcoTacho.png" class="logo">
+
+<div class="titulo">
+
+<h1>
+EcoTacho
+</h1>
+
+<p>
+Tecnología que cuida el planeta
+</p>
+
+</div>
+
+</div>
+
+
+<button class="menu-toggle" onclick="toggleMenu()">
+
+☰
+
+</button>
+
+
+<nav class="nav-menu" id="navMenu">
+
+<a href="Proyectodeemprendimiento.html#inicio">
+Inicio
+</a>
+
+<a href="Proyectodeemprendimiento.html#catalogo">
+Productos
+</a>
+
+<a href="nosotros.html">
+Nosotros
+</a>
+
+<a href="Proyectodeemprendimiento.html#contactanos">
+Contáctanos
+</a>
+
+<a href="viaje.html">
+Viaje a Trujillo
+</a>
+
+<a href="viaje2.html">
+Viaje a Trujillo 2
+</a>
+
+<a href="carrito.html" class="carrito">
+
+🛒 Carrito
+
+</a>
+
+</nav>
+
+</header>
+
+
+<main>
+
+<h1>
+🚌 Viaje a Trujillo 2
+</h1>
+
+
+<p class="descripcion">
+
+Ruta del viaje de estudios iniciando desde el Terminal Tetsur Jaén,
+recorriendo lugares históricos, culturales y turísticos de Trujillo.
+
+</p>
+
+
+<div class="ruta">
+
+
+<div class="parada">
+
+<h2>
+🚌 Terminal Tetsur Jaén
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Ruta1_1.jpeg">
+<p class="foto-descripcion">Aquí nos encontramos con mis compañeros antes de iniciar el viaje. Había mucha emoción porque por fin comenzábamos nuestro recorrido hacia Trujillo.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Ruta1_2.jpeg">
+<p class="foto-descripcion">Desde el terminal salimos de Jaén rumbo a Trujillo. Durante el viaje estuvimos conversando y esperando con entusiasmo llegar a nuestro destino.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="parada">
+
+<h2>
+🏫 Instituto de Educación Superior Público "Trujillo"
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Instituto_Trujillo_1.jpeg">
+<p class="foto-descripcion">En este instituto nos recibieron para que pudiéramos tomar nuestro desayuno antes de seguir con las visitas programadas.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Instituto_Trujillo_2.jpeg">
+<p class="foto-descripcion">Nos dieron un pan relleno con tortilla de huevo y hotdog, una botella de avena y otra de jugo de papaya. Desayunamos juntos y luego continuamos con nuestro recorrido.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="parada">
+
+<h2>
+🏛 Museo Santiago Uceda Castillo
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Ruta2_1.jpeg">
+<p class="foto-descripcion">En el museo observé diferentes piezas y objetos que me ayudaron a conocer un poco más sobre la historia y la arqueología de Trujillo.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Ruta2_2.jpeg">
+<p class="foto-descripcion">Durante la visita aprendí varios datos sobre las culturas que habitaron esta zona. Fue interesante poder ver de cerca algunas de las piezas que había estudiado anteriormente.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="parada">
+
+<h2>
+🌙 Huaca de la Luna
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Ruta3_1.jpeg">
+<p class="foto-descripcion">En la Huaca de la Luna pude observar los restos y decoraciones que dejaron los mochicas. Me pareció interesante conocer más sobre esta cultura durante el recorrido.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Ruta3_2.jpeg">
+<p class="foto-descripcion">Lo que más me gustó fueron los murales y relieves que todavía se pueden apreciar. Verlos directamente hizo que la visita fuera mucho más interesante.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="parada">
+
+<h2>
+🏨 Hotel
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Ruta4_1.jpeg">
+<p class="foto-descripcion">En el hotel nos instalamos y tuvimos un momento para descansar después de las actividades del día. También aprovechamos para compartir un rato entre compañeros.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Ruta4_2.jpeg">
+<p class="foto-descripcion">Después de un día lleno de visitas, este fue nuestro espacio para descansar y recuperar energías para las siguientes actividades.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="parada">
+
+<h2>
+⛪ Catedral Basílica de Santa María
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Ruta5_1.jpeg">
+<p class="foto-descripcion">En la Catedral Basílica de Santa María pude apreciar su arquitectura y conocer un lugar importante de la historia religiosa de Trujillo.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Ruta5_2.jpeg">
+<p class="foto-descripcion">Durante la visita observé sus diferentes detalles y aproveché para tomar fotografías como recuerdo de nuestro recorrido.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="parada">
+
+<h2>
+🏛 Plaza de Armas de Trujillo
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Plaza_Armas_1.jpeg">
+<p class="foto-descripcion">En la Plaza de Armas conocí uno de los espacios más representativos de Trujillo. Me gustó observar los edificios y el ambiente del centro de la ciudad.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Plaza_Armas_2.jpeg">
+<p class="foto-descripcion">Pudimos caminar por la plaza, tomarnos algunas fotografías y observar los monumentos y construcciones que la rodean.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="parada">
+
+<h2>
+🛍 Mall Plaza Trujillo
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Ruta6_1.jpeg">
+<p class="foto-descripcion">En el Mall Plaza Trujillo tuvimos un momento más libre para recorrer sus instalaciones y conocer las diferentes tiendas y espacios del lugar.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Ruta6_2.jpeg">
+<p class="foto-descripcion">Aprovechamos la visita para caminar, mirar algunas tiendas y pasar un momento agradable con mis compañeros.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="parada">
+
+<h2>
+🏨 Hotel
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Ruta7_1.jpeg">
+<p class="foto-descripcion">Al finalizar las actividades regresamos al hotel para descansar y pasar la noche antes de continuar con el viaje.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Ruta7_2.jpeg">
+<p class="foto-descripcion">Después de descansar, quedamos listos para seguir con las visitas que teníamos programadas para el siguiente día.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="parada">
+
+<h2>
+🏛 Museo de Sitio de Chan Chan
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Ruta8_1.jpeg">
+<p class="foto-descripcion">En el Museo de Sitio de Chan Chan conocí más sobre la cultura Chimú y pude observar objetos que forman parte de su historia.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Ruta8_2.jpeg">
+<p class="foto-descripcion">La visita me permitió aprender sobre las costumbres, la organización y la forma de vida de los antiguos habitantes de Chan Chan.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="parada">
+
+<h2>
+🏜 Chan Chan
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Ruta9_1.jpeg">
+<p class="foto-descripcion">Al recorrer Chan Chan pude ver sus enormes construcciones de adobe y conocer parte de lo que fue esta antigua ciudad de la cultura Chimú.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Ruta9_2.jpeg">
+<p class="foto-descripcion">Me sorprendió ver lo grandes que son sus muros y los diseños que todavía se conservan. Fue una de las visitas que más me permitió conocer sobre nuestro patrimonio.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="parada">
+
+<h2>
+🌊 Playa de Huanchaco
+</h2>
+
+<div class="fotos">
+
+<div class="foto-item">
+<img src="Imagenes/Ruta10_1.jpeg">
+<p class="foto-descripcion">En Huanchaco disfruté del paisaje de la costa y pude conocer más sobre la tradición de los caballitos de totora, que son parte de la identidad del lugar.</p>
+</div>
+
+<div class="foto-item">
+<img src="Imagenes/Ruta10_2.jpeg">
+<p class="foto-descripcion">Me gustó caminar por los alrededores de la playa y disfrutar del paisaje. Fue una bonita manera de terminar nuestro recorrido por Trujillo.</p>
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<a href="Proyectodeemprendimiento.html#inicio" class="volver">
+
+← Volver al inicio
+
+</a>
+
+
+</main>
+
+
+<footer>
+
+<h3>
+EcoTacho
+</h3>
+
+<p>
+Tecnología que cuida el planeta
+</p>
+
+<p class="copyright">
+
+© 2026 EcoTacho. Todos los derechos reservados.
+
+</p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu(){
+
+document
+.getElementById("navMenu")
+.classList
+.toggle("active");
+
+}
+
+</script>
+
+
+</body>
+
+</html>
