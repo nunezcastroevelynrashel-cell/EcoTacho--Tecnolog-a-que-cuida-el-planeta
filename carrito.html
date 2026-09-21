@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carrito de compras - EcoTacho</title>
+
+<link rel="icon" type="image/png" href="Imagenes/Logo-de-EcoTacho.png">
+
+<style>
+
+/* =========================
+   GENERAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, sans-serif;
+
+    background:#f0fdf4;
+
+    color:#12372a;
+
+    min-height:100vh;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 8%;
+
+    background:#064e3b;
+
+    color:white;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+
+}
+
+
+.marca{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+.logo{
+
+    width:75px;
+
+    height:auto;
+
+}
+
+
+.marca h1{
+
+    font-family:Georgia, serif;
+
+    font-size:25px;
+
+}
+
+
+.marca p{
+
+    color:#d1fae5;
+
+    font-size:12px;
+
+    margin-top:3px;
+
+}
+
+
+.volver{
+
+    text-decoration:none;
+
+    color:#173b1c;
+
+    background:#bef264;
+
+    padding:11px 18px;
+
+    border-radius:8px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+
+.volver:hover{
+
+    background:#d9f99d;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* =========================
+   CONTENEDOR
+========================= */
+
+.contenedor{
+
+    max-width:1100px;
+
+    margin:50px auto;
+
+    padding:0 25px;
+
+}
+
+
+.titulo{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+
+.titulo h2{
+
+    font-family:Georgia, serif;
+
+    color:#064e3b;
+
+    font-size:38px;
+
+}
+
+
+.titulo p{
+
+    color:#527061;
+
+    margin-top:10px;
+
+}
+
+
+/* =========================
+   CARRITO VACÍO
+========================= */
+
+.carrito-vacio{
+
+    display:none;
+
+    text-align:center;
+
+    background:white;
+
+    padding:60px 20px;
+
+    border-radius:18px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.1);
+
+}
+
+
+.carrito-vacio h3{
+
+    font-size:25px;
+
+    color:#064e3b;
+
+    margin-bottom:15px;
+
+}
+
+
+.carrito-vacio p{
+
+    color:#527061;
+
+    margin-bottom:25px;
+
+}
+
+
+.boton-comprar{
+
+    display:inline-block;
+
+    background:#064e3b;
+
+    color:white;
+
+    padding:14px 25px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================
+   PRODUCTOS
+========================= */
+
+.carrito-productos{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+
+.item-carrito{
+
+    display:grid;
+
+    grid-template-columns:
+    120px 1fr auto;
+
+    align-items:center;
+
+    gap:25px;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+
+.item-carrito img{
+
+    width:110px;
+
+    height:100px;
+
+    object-fit:contain;
+
+}
+
+
+.info-producto h3{
+
+    color:#064e3b;
+
+    font-family:Georgia, serif;
+
+    font-size:22px;
+
+    margin-bottom:10px;
+
+}
+
+
+.info-producto p{
+
+    color:#15803d;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}
+
+
+/* =========================
+   CANTIDAD
+========================= */
+
+.controles{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:15px;
+
+}
+
+
+.cantidad-boton{
+
+    width:32px;
+
+    height:32px;
+
+    border:none;
+
+    background:#dcfce7;
+
+    color:#064e3b;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+
+.cantidad-boton:hover{
+
+    background:#bbf7d0;
+
+}
+
+
+.numero-cantidad{
+
+    font-weight:bold;
+
+    font-size:17px;
+
+}
+
+
+/* =========================
+   SUBTOTAL
+========================= */
+
+.acciones{
+
+    text-align:right;
+
+}
+
+
+.subtotal{
+
+    color:#064e3b;
+
+    font-weight:bold;
+
+    font-size:19px;
+
+    margin-bottom:15px;
+
+}
+
+
+.eliminar{
+
+    border:none;
+
+    background:#dc2626;
+
+    color:white;
+
+    padding:9px 14px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+
+.eliminar:hover{
+
+    background:#b91c1c;
+
+}
+
+
+/* =========================
+   RESUMEN
+========================= */
+
+.resumen{
+
+    margin-top:30px;
+
+    margin-left:auto;
+
+    max-width:400px;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.12);
+
+}
+
+
+.resumen h3{
+
+    font-family:Georgia, serif;
+
+    color:#064e3b;
+
+    font-size:25px;
+
+    margin-bottom:20px;
+
+}
+
+
+.linea-total{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-top:1px solid #d1fae5;
+
+    padding-top:20px;
+
+    margin-top:20px;
+
+    font-size:21px;
+
+    font-weight:bold;
+
+    color:#064e3b;
+
+}
+
+
+.finalizar{
+
+    width:100%;
+
+    margin-top:25px;
+
+    border:none;
+
+    background:#25D366;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.finalizar:hover{
+
+    background:#1da851;
+
+    transform:translateY(-2px);
+
+}
+
+
+.vaciar{
+
+    width:100%;
+
+    margin-top:12px;
+
+    border:none;
+
+    background:#e5e7eb;
+
+    color:#374151;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+
+.vaciar:hover{
+
+    background:#d1d5db;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    margin-top:70px;
+
+    background:#011c16;
+
+    color:#d1fae5;
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    header{
+
+        padding:12px 20px;
+
+    }
+
+
+    .logo{
+
+        width:60px;
+
+    }
+
+
+    .marca h1{
+
+        font-size:20px;
+
+    }
+
+
+    .item-carrito{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+
+    .item-carrito img{
+
+        margin:auto;
+
+    }
+
+
+    .acciones{
+
+        text-align:center;
+
+    }
+
+
+    .controles{
+
+        justify-content:center;
+
+    }
+
+
+    .titulo h2{
+
+        font-size:30px;
+
+    }
+
+
+    .volver{
+
+        padding:9px 12px;
+
+        font-size:13px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+
+<div class="marca">
+
+<img
+src="Imagenes/Logo-de-EcoTacho.png"
+alt="Logo EcoTacho"
+class="logo">
+
+
+<div>
+
+<h1>
+EcoTacho
+</h1>
+
+<p>
+Tecnología que cuida el planeta
+</p>
+
+</div>
+
+</div>
+
+
+
+<a
+href="Proyectodeemprendimiento.html"
+class="volver">
+
+← Seguir comprando
+
+</a>
+
+
+</header>
+
+
+
+<!-- CONTENIDO -->
+
+<div class="contenedor">
+
+
+<div class="titulo">
+
+<h2>
+🛒 Mi carrito
+</h2>
+
+<p>
+Revisa los productos seleccionados antes de realizar tu pedido.
+</p>
+
+</div>
+
+
+
+<!-- CARRITO VACÍO -->
+
+<div
+id="carritoVacio"
+class="carrito-vacio">
+
+<h3>
+Tu carrito está vacío 🛒
+</h3>
+
+<p>
+Aún no has agregado ningún EcoTacho.
+</p>
+
+<a
+href="Proyectodeemprendimiento.html#catalogo"
+class="boton-comprar">
+
+Ver productos
+
+</a>
+
+</div>
+
+
+
+<!-- PRODUCTOS -->
+
+<div
+id="carritoProductos"
+class="carrito-productos">
+
+</div>
+
+
+
+<!-- RESUMEN -->
+
+<div
+id="resumen"
+class="resumen">
+
+
+<h3>
+Resumen del pedido
+</h3>
+
+
+<div class="linea-total">
+
+<span>
+Total:
+</span>
+
+<span id="total">
+S/ 0.00
+</span>
+
+</div>
+
+
+<button
+class="finalizar"
+onclick="finalizarPedido()">
+
+📱 Finalizar pedido por WhatsApp
+
+</button>
+
+
+<button
+class="vaciar"
+onclick="vaciarCarrito()">
+
+Vaciar carrito
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+
+🌱 EcoTacho — Recicla hoy, cuida el mañana.
+
+</p>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   MOSTRAR CARRITO
+========================= */
+
+function mostrarCarrito(){
+
+
+    let carrito =
+
+    JSON.parse(
+        localStorage.getItem("carrito")
+    ) || [];
+
+
+    const contenedor =
+
+    document.getElementById(
+        "carritoProductos"
+    );
+
+
+    const carritoVacio =
+
+    document.getElementById(
+        "carritoVacio"
+    );
+
+
+    const resumen =
+
+    document.getElementById(
+        "resumen"
+    );
+
+
+    contenedor.innerHTML = "";
+
+
+    if(carrito.length === 0){
+
+
+        carritoVacio.style.display = "block";
+
+        resumen.style.display = "none";
+
+        return;
+
+    }
+
+
+    carritoVacio.style.display = "none";
+
+    resumen.style.display = "block";
+
+
+    let total = 0;
+
+
+    carrito.forEach(
+        function(producto, indice){
+
+
+            const subtotal =
+
+            producto.precio *
+            producto.cantidad;
+
+
+            total += subtotal;
+
+
+            contenedor.innerHTML += `
+
+            <div class="item-carrito">
+
+
+                <img
+                src="${producto.imagen}"
+                alt="${producto.nombre}">
+
+
+                <div class="info-producto">
+
+
+                    <h3>
+                    ${producto.nombre}
+                    </h3>
+
+
+                    <p>
+                    S/ ${producto.precio.toFixed(2)}
+                    </p>
+
+
+                    <div class="controles">
+
+
+                        <button
+                        class="cantidad-boton"
+                        onclick="cambiarCantidad(${indice}, -1)">
+
+                        −
+
+                        </button>
+
+
+                        <span class="numero-cantidad">
+
+                        ${producto.cantidad}
+
+                        </span>
+
+
+                        <button
+                        class="cantidad-boton"
+                        onclick="cambiarCantidad(${indice}, 1)">
+
+                        +
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="acciones">
+
+
+                    <div class="subtotal">
+
+                    S/ ${subtotal.toFixed(2)}
+
+                    </div>
+
+
+                    <button
+                    class="eliminar"
+                    onclick="eliminarProducto(${indice})">
+
+                    Eliminar
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+            `;
+
+
+        }
+    );
+
+
+    document
+    .getElementById("total")
+    .textContent =
+
+    "S/ " + total.toFixed(2);
+
+
+}
+
+
+
+/* =========================
+   CAMBIAR CANTIDAD
+========================= */
+
+function cambiarCantidad(indice, cambio){
+
+
+    let carrito =
+
+    JSON.parse(
+        localStorage.getItem("carrito")
+    ) || [];
+
+
+    carrito[indice].cantidad += cambio;
+
+
+    if(carrito[indice].cantidad <= 0){
+
+        carrito.splice(indice,1);
+
+    }
+
+
+    localStorage.setItem(
+
+        "carrito",
+
+        JSON.stringify(carrito)
+
+    );
+
+
+    mostrarCarrito();
+
+}
+
+
+
+/* =========================
+   ELIMINAR PRODUCTO
+========================= */
+
+function eliminarProducto(indice){
+
+
+    let carrito =
+
+    JSON.parse(
+        localStorage.getItem("carrito")
+    ) || [];
+
+
+    carrito.splice(indice,1);
+
+
+    localStorage.setItem(
+
+        "carrito",
+
+        JSON.stringify(carrito)
+
+    );
+
+
+    mostrarCarrito();
+
+}
+
+
+
+/* =========================
+   VACIAR CARRITO
+========================= */
+
+function vaciarCarrito(){
+
+
+    const confirmar =
+
+    confirm(
+        "¿Estás seguro de vaciar el carrito?"
+    );
+
+
+    if(confirmar){
+
+
+        localStorage.removeItem(
+            "carrito"
+        );
+
+
+        mostrarCarrito();
+
+
+    }
+
+}
+
+
+
+/* =========================
+   FINALIZAR POR WHATSAPP
+========================= */
+
+function finalizarPedido(){
+
+
+    let carrito =
+
+    JSON.parse(
+        localStorage.getItem("carrito")
+    ) || [];
+
+
+    if(carrito.length === 0){
+
+        alert(
+            "Tu carrito está vacío."
+        );
+
+        return;
+
+    }
+
+
+    let mensaje =
+
+    "Hola EcoTacho, deseo realizar el siguiente pedido:%0A%0A";
+
+
+    let total = 0;
+
+
+    carrito.forEach(function(producto){
+
+
+        const subtotal =
+
+        producto.precio *
+        producto.cantidad;
+
+
+        total += subtotal;
+
+
+        mensaje +=
+
+        "• " +
+
+        producto.nombre +
+
+        "%0A" +
+
+        "Cantidad: " +
+
+        producto.cantidad +
+
+        "%0A" +
+
+        "Subtotal: S/ " +
+
+        subtotal.toFixed(2) +
+
+        "%0A%0A";
+
+
+    });
+
+
+    mensaje +=
+
+    "TOTAL DEL PEDIDO: S/ " +
+
+    total.toFixed(2);
+
+
+    /* CAMBIA EL NÚMERO AQUÍ
+       POR TU NÚMERO REAL DE WHATSAPP */
+
+    const numeroWhatsApp =
+
+    "51914770647";
+
+
+    window.open(
+
+        "https://wa.me/" +
+
+        numeroWhatsApp +
+
+        "?text=" +
+
+        mensaje,
+
+        "_blank"
+
+    );
+
+}
+
+
+
+/* =========================
+   CARGAR CARRITO
+========================= */
+
+mostrarCarrito();
+
+
+</script>
+
+
+</body>
+
+</html>
